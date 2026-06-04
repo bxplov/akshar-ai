@@ -1,0 +1,28 @@
+{
+  "name": "akshar-ai",
+  "version": "1.0.0",
+  "description": "Transform YouTube videos into beautifully formatted study notes with AI",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=backend & npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=frontend && npm run build --workspace=backend",
+    "build:backend": "npm run build --workspace=backend",
+    "build:frontend": "npm run build --workspace=frontend",
+    "install-all": "npm install && npm install --workspace=backend && npm install --workspace=frontend"
+  },
+  "keywords": [
+    "youtube",
+    "study-notes",
+    "ai",
+    "gemini",
+    "mern"
+  ],
+  "author": "Akshar AI Team",
+  "license": "MIT"
+}

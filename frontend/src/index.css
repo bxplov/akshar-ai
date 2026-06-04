@@ -1,0 +1,563 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+   WARM MINIMALIST BENTO — Design System v3.0
+   Cream backgrounds, charcoal accents, muted gold highlights
+   Ultra-rounded bento cards, Outfit typography
+*/
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-sans leading-relaxed m-0 p-0;
+    background: linear-gradient(145deg, #F5F3ED 0%, #F8F6F0 30%, #F2EFE6 70%, #F5F3ED 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #root {
+    @apply min-h-screen flex flex-col;
+  }
+
+  /* Warm Ambient Background Radials */
+  #root::before,
+  #root::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #root::before {
+    top: -10%;
+    right: -15%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(
+      circle,
+      rgba(252, 224, 123, 0.08) 0%,
+      rgba(252, 224, 123, 0.04) 35%,
+      transparent 70%
+    );
+    animation: breathe-ambient 10s ease-in-out infinite;
+    transform: translateZ(0);
+    will-change: opacity;
+  }
+
+  #root::after {
+    bottom: -15%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(
+      circle,
+      rgba(212, 168, 67, 0.05) 0%,
+      rgba(245, 243, 237, 0.03) 35%,
+      transparent 70%
+    );
+    animation: breathe-ambient 12s ease-in-out infinite reverse;
+    transform: translateZ(0);
+    will-change: opacity;
+  }
+
+  @keyframes breathe-ambient {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  /* Elegant scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(42, 43, 42, 0.10);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(42, 43, 42, 0.20);
+  }
+
+  /*  */
+  .dark-scrollbar::-webkit-scrollbar {
+    width: 12px;
+  }
+  .dark-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .dark-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #4a4a4a;
+    border-radius: 10px;
+    border: 3px solid #2A2B2A;
+  }
+  .dark-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+  }
+  .dark-scrollbar::-webkit-scrollbar-button:single-button {
+    display: block;
+    height: 14px;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .dark-scrollbar::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="%234a4a4a" stroke="none"><polygon points="12,6 4,18 20,18"/></svg>');
+  }
+  .dark-scrollbar::-webkit-scrollbar-button:single-button:vertical:increment {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="%234a4a4a" stroke="none"><polygon points="12,18 4,6 20,6"/></svg>');
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(252, 224, 123, 0.3);
+    color: #2A2B2A;
+  }
+}
+
+@layer components {
+
+  /*  */
+
+  .bento-card {
+    @apply bg-white rounded-bento;
+    box-shadow: 0 8px 30px rgb(0 0 0 / 0.03);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+    backface-visibility: hidden;
+  }
+
+  .bento-card:hover {
+    box-shadow: 0 12px 40px rgb(0 0 0 / 0.06);
+  }
+
+  .bento-card-dark {
+    @apply bg-charcoal text-white rounded-bento;
+    box-shadow: 0 8px 30px rgb(0 0 0 / 0.08);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+    backface-visibility: hidden;
+  }
+
+  .bento-card-dark:hover {
+    box-shadow: 0 12px 40px rgb(0 0 0 / 0.12);
+  }
+
+  /*  */
+
+  .pill-nav {
+    @apply bg-white rounded-full px-2 py-1.5 flex items-center gap-1;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 0.04);
+  }
+
+  .pill-nav-item {
+    @apply px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer;
+    @apply text-stone-500 hover:text-charcoal bg-transparent border-none;
+  }
+
+  .pill-nav-item-active {
+    @apply px-4 py-2 rounded-full text-sm font-medium cursor-pointer;
+    @apply bg-charcoal text-white border-none;
+  }
+
+  /*  */
+
+  .btn-charcoal {
+    @apply bg-charcoal text-white font-medium rounded-full text-sm transition-all duration-300 border-none cursor-pointer;
+    @apply hover:bg-charcoal-300 active:scale-[0.97];
+  }
+
+  .btn-charcoal:disabled {
+    @apply opacity-40 cursor-not-allowed;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-charcoal font-medium rounded-full text-sm transition-all duration-300 border-none cursor-pointer;
+    @apply hover:bg-gold-300 active:scale-[0.97];
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-stone-500 font-medium rounded-full text-sm transition-all duration-300 border-none cursor-pointer;
+    @apply hover:bg-cream-200 hover:text-charcoal;
+  }
+
+  /*  */
+
+  .input-pill {
+    @apply w-full bg-cream-200/70 border-none text-charcoal text-sm font-sans rounded-full px-5 py-3.5;
+    @apply placeholder:text-stone-400/60 transition-all duration-300;
+    box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.03);
+  }
+
+  .input-pill:focus {
+    @apply outline-none bg-cream-200;
+    box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.03), 0 0 0 3px rgba(252, 224, 123, 0.35);
+  }
+
+  .input-pill:disabled {
+    @apply opacity-40 cursor-not-allowed;
+  }
+
+  /*  */
+
+  .toggle-switch {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 cursor-pointer;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  .toggle-switch-knob {
+    @apply inline-block h-4 w-4 transform rounded-full transition-all duration-300;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  /*  */
+
+  .section-label {
+    @apply flex items-center gap-2;
+  }
+
+  .section-label-icon {
+    @apply text-stone-400;
+  }
+
+  .section-label-text {
+    @apply text-[11px] font-semibold text-stone-400 uppercase tracking-[0.15em];
+  }
+
+  /*  */
+
+  .floating-toolbar {
+    @apply fixed bottom-6 left-1/2 -translate-x-1/2 z-50;
+    animation: float-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .floating-toolbar-inner {
+    @apply flex items-center gap-1 bg-charcoal rounded-full px-3 py-2;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  /*  */
+
+  .dropdown-menu {
+    @apply absolute bottom-full mb-2 right-0 w-48 bg-white border-none rounded-bento-sm overflow-hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+    animation: scale-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes scale-in {
+    0% { opacity: 0; transform: scale(0.95) translateY(4px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  @keyframes float-in {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+  }
+
+  .animate-shake {
+    animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
+  /*  */
+
+  .skeleton-bar {
+    @apply rounded-md;
+    background: linear-gradient(
+      90deg,
+      rgba(42, 43, 42, 0.04) 25%,
+      rgba(42, 43, 42, 0.08) 50%,
+      rgba(42, 43, 42, 0.04) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  /*  */
+
+  .ruled-paper-display {
+    background-color: #FFFFFF;
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent calc(2rem - 1px),
+        rgba(42, 43, 42, 0.04) calc(2rem - 1px),
+        rgba(42, 43, 42, 0.04) 2rem
+      );
+    background-size: 100% 2rem;
+    background-position: 0 0;
+    background-attachment: local;
+  }
+
+  .ruled-text {
+    line-height: 2rem;
+    padding-top: 0.125rem;
+  }
+}
+
+@layer utilities {
+  .float-enter {
+    animation: float-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+/* 
+   Print Styles
+*/
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html { background: white; }
+
+  body {
+    background: white;
+    color: black;
+    font-family: 'Outfit', Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  body::after {
+    display: none !important;
+  }
+
+  html, body, #root {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root::before,
+  #root::after {
+    display: none !important;
+  }
+
+  .no-print,
+  nav, header,
+  .floating-toolbar,
+  button {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .note-canvas-wrapper {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0;
+    padding: 20mm;
+    margin: 0;
+    min-height: auto;
+  }
+
+  .markdown-content {
+    color: black !important;
+    background: white !important;
+  }
+
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3,
+  .markdown-content h4,
+  .markdown-content h5,
+  .markdown-content h6 {
+    color: black !important;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  .markdown-content p { page-break-inside: avoid; margin-bottom: 1em; }
+  .markdown-content ul, .markdown-content ol { page-break-inside: avoid; margin-bottom: 1em; margin-left: 1.5em; }
+  .markdown-content li { page-break-inside: avoid; margin-bottom: 0.5em; }
+
+  .markdown-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+    border: 1px solid #333;
+    page-break-inside: avoid;
+  }
+
+  .markdown-content th,
+  .markdown-content td {
+    border: 1px solid #333 !important;
+    padding: 8px 12px;
+    text-align: left;
+    background-color: white !important;
+    color: black !important;
+  }
+
+  .markdown-content th {
+    background-color: #f0f0f0 !important;
+    font-weight: 600;
+  }
+
+  .markdown-content code {
+    background-color: #f5f5f5 !important;
+    color: #333 !important;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    border: 1px solid #ddd;
+  }
+
+  .markdown-content pre {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 1em 0;
+    page-break-inside: avoid;
+  }
+
+  .markdown-content pre code {
+    background-color: transparent !important;
+    border: none;
+    padding: 0;
+  }
+
+  .markdown-content blockquote {
+    border-left: 4px solid #333;
+    margin: 1em 0;
+    padding-left: 1em;
+    color: #333 !important;
+    page-break-inside: avoid;
+  }
+
+  .markdown-content a { color: #0066cc; text-decoration: underline; }
+  .markdown-content img { max-width: 100%; height: auto; display: block; margin: 1em 0; }
+  a[href]:after { content: none !important; }
+
+  @page { size: A4; margin: 1cm; }
+  @page :first { margin-top: 1cm; }
+}
+
+/* 
+   MD Editor Overrides — Warm Bento Theme
+*/
+.w-md-editor {
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(42, 43, 42, 0.08) !important;
+  border-radius: 1.5rem !important;
+  color: #2A2B2A !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+}
+
+.w-md-editor .w-md-editor-toolbar {
+  background-color: rgba(245, 243, 237, 0.9) !important;
+  border-bottom: 1px solid rgba(42, 43, 42, 0.06) !important;
+  border-radius: 1.5rem 1.5rem 0 0 !important;
+  padding: 6px 8px !important;
+}
+
+.w-md-editor .w-md-editor-toolbar button {
+  color: #a8a29e !important;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 8px !important;
+}
+
+.w-md-editor .w-md-editor-toolbar button:hover {
+  background-color: rgba(252, 224, 123, 0.15) !important;
+  color: #2A2B2A !important;
+}
+
+/* Typography Synchronization (CRITICAL FOR CURSOR ALIGNMENT) */
+.w-md-editor-text-input,
+.w-md-editor-text,
+.w-md-editor-text-pre,
+.w-md-editor-text-pre > code,
+.w-md-editor-text-pre > code > span {
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* Text input (textarea) needs to be transparent, showing only the caret */
+.w-md-editor-text-input {
+  background-color: transparent !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  caret-color: #2A2B2A !important;
+}
+
+/* Syntax highlighted layers underneath the textarea */
+.w-md-editor-text,
+.w-md-editor-text-pre,
+.w-md-editor-text-pre > code,
+.w-md-editor-text-pre > code > span {
+  background-color: transparent !important;
+  color: #2A2B2A !important;
+  -webkit-text-fill-color: #2A2B2A !important;
+}
+
+.w-md-editor-text-input::-webkit-input-placeholder {
+  color: rgba(42, 43, 42, 0.4) !important;
+  -webkit-text-fill-color: rgba(42, 43, 42, 0.4) !important;
+}
+
+.w-md-editor[data-color-mode="light"] {
+  --color-fg-default: #2A2B2A !important;
+  --color-canvas-default: #FFFFFF !important;
+}
+
+.w-md-editor-preview {
+  background-color: rgba(245, 243, 237, 0.3) !important;
+  color: #2A2B2A !important;
+}
+
+.w-md-editor-preview h1,
+.w-md-editor-preview h2,
+.w-md-editor-preview h3,
+.w-md-editor-preview h4,
+.w-md-editor-preview h5,
+.w-md-editor-preview h6 {
+  color: #2A2B2A !important;
+}
+
+.w-md-editor-preview code {
+  background-color: rgba(252, 224, 123, 0.12) !important;
+  color: #2A2B2A !important;
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+.w-md-editor-preview table { border-color: rgba(42, 43, 42, 0.1) !important; }
+.w-md-editor-preview th { background-color: rgba(245, 243, 237, 0.8) !important; color: #2A2B2A !important; }
+.w-md-editor-preview td { border-color: rgba(42, 43, 42, 0.1) !important; }
