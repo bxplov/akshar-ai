@@ -1,73 +1,84 @@
 # Akshar AI
 
-Akshar AI is a full-stack MERN application that converts YouTube video transcripts into comprehensive, formatted study notes using the Google Gemini API. It features a modern interface, multiple study modes, and export capabilities.
+🌍 Live Demo: [Akshar AI](https://akshar-ai-frontend.vercel.app/)
 
-## Features
+Akshar AI is a full-stack web application that turns YouTube video into clean, easy-to-read study notes. It uses the Google Gemini API to make long videos into short, useful notes for students and anyone who wants to learn quickly.
 
-- Video to Notes: Scrape transcripts from YouTube videos and convert them into study notes.
-- Study Modes: Choose between Quick, Detailed, and Exam modes for different levels of depth.
-- Real-time Streaming: Watch notes generate in real-time.
-- Markdown Editor: Edit notes using the built-in rich text editor.
-- Export Options: Copy as Markdown, or export as PDF or PNG.
-- Customization: Toggle between ruled or clean backgrounds, and modern or handwritten typography.
-- User Management: Secure JWT authentication to save and manage note history.
+## Tech Stack
+
+* **Frontend:** React, Vite, Tailwind CSS
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB
+* **AI API:** Google Gemini API
+
+## Key Features
+
+* **Video to Notes:** Automatically converts YouTube video content into study notes.
+* **Study Modes:** Choose how detailed you want your notes:
+    * **Quick:** For short summaries.
+    * **Detailed:** For deep understanding.
+    * **Exam:** For test preparation.
+* **Live Generation:** Watch your notes being written on the screen in real-time.
+* **Note Editor:** Edit your notes using the built-in text editor.
+* **Export Options:** Copy notes as Markdown text, or save them as a PDF or PNG image.
+* **User Accounts:** Safely log in and save your history of notes.
 
 ## Prerequisites
 
-- Node.js (v16+)
-- MongoDB (local instance or MongoDB Atlas)
-- Google Gemini API Key
+Before starting, make sure you have:
+
+* Node.js (Version 16 or newer)
+* MongoDB (Installed locally or using MongoDB Atlas)
+* A Google Gemini API Key
 
 ## Installation and Setup
 
-1. Install Dependencies
-Run the following command from the root directory to install dependencies for both the frontend and backend:
+Follow these steps to run the project on your computer:
+
+### 1. Install Dependencies
+
+Run this command in the main project folder to install packages for both the frontend and backend:
 
 ```bash
 npm install
 ```
 
-2. Environment Variables
-Create a .env file in the backend directory based on the example:
+### 2. Set Up Environment Variables
+
+Go to the `backend` folder and copy the example environment file:
 
 ```bash
 cp backend/.env.example backend/.env
 ```
 
-Ensure the following variables are set in backend/.env:
+Open the new `backend/.env` file and add your details:
 
 ```env
 NODE_ENV=development
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/akshar-ai
-JWT_SECRET=your_jwt_secret
-GEMINI_API_KEY=your_gemini_api_key
+JWT_SECRET=your_jwt_secret_here
+GEMINI_API_KEY=your_gemini_api_key_here
 FRONTEND_URL=http://localhost:5173
 ```
 
-3. Start Development Servers
-From the root directory, start both the backend and frontend concurrently:
+### 3. Start the App
+
+Go back to the main project folder and start both the frontend and backend at the same time:
 
 ```bash
 npm run dev
 ```
 
-The backend will run on port 5000 and the frontend on port 5173.
+* The backend will run on port `5000`.
+* The frontend will be open at `http://localhost:5173`.
 
-## Usage
+## How to Use
 
-1. Create an account or sign in.
-2. Paste a YouTube URL into the dashboard input.
-3. Select a study mode (Quick, Detailed, or Exam).
-4. Click Generate and wait for the stream to complete.
-5. Use the toolbar to edit, copy, or export the final document.
+1. **Sign Up / Log In:** Create an account or log in to an existing one.
+2. **Add Video:** Paste a YouTube video link into the dashboard.
+3. **Choose Mode:** Select Quick, Detailed, or Exam mode.
+4. **Generate:** Click the "Generate" button and watch your notes appear.
+5. **Save:** Use the menu options to edit, copy, or download your notes.
 
-## Architecture
 
-The project is structured as a monorepo containing two main workspaces:
-- backend: Node.js, Express, and MongoDB. Handles authentication, YouTube transcript fetching, and Gemini API integration.
-- frontend: React, Vite, and Tailwind CSS. Handles the user interface, real-time markdown rendering, and local state management.
-
-## License
-
-This project is licensed under the MIT License.

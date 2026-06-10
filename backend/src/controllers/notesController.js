@@ -39,6 +39,10 @@ export const generateNotes = async (req, res) => {
     try {
       const stream = await generateStudyNotesStream(transcript, mode);
 
+      stream.response.catch((err) => {
+        console.error("[NotesController] Background stream.response error:", err.message);
+      });
+
       for await (const chunk of stream.stream) {
         if (clientDisconnected) break;
 

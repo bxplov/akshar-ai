@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { ExportButton } from './ExportButton';
 
 export const NoteCanvas = ({
@@ -172,7 +173,7 @@ export const NoteCanvas = ({
                   [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-charcoal
                   [&_blockquote]:border-l-[3px] [&_blockquote]:border-gold [&_blockquote]:pl-4 [&_blockquote]:my-4 [&_blockquote]:text-stone-500 [&_blockquote]:italic
                 `}>
-                  <ReactMarkdown>{content}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
                 </div>
               </div>
             )}

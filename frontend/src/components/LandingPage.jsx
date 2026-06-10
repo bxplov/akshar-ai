@@ -183,9 +183,9 @@ export const LandingPage = ({ onGetStarted, onSignIn, onGoHome }) => {
             </div>
           </div>
 
-          <div className="md:col-span-12 bg-white border border-cream-300 rounded-[2rem] shadow-sm p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 hover:-translate-y-1 transition-transform duration-300 transform-gpu" id="feature-exam">
-            <div className="flex items-start gap-6">
-              <div className="w-12 h-12 rounded-2xl bg-gold/20 flex items-center justify-center flex-shrink-0 shadow-sm">
+          <div className="md:col-span-12 bg-white border border-cream-300 rounded-[2rem] shadow-sm p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between sm:gap-6 hover:-translate-y-1 transition-transform duration-300 transform-gpu" id="feature-exam">
+            <div className="flex flex-col sm:flex-row items-start sm:gap-6">
+              <div className="w-12 h-12 rounded-2xl bg-gold/20 flex items-center justify-center flex-shrink-0 shadow-sm mb-6 sm:mb-0">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A2B2A" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" />
                 </svg>
@@ -197,7 +197,7 @@ export const LandingPage = ({ onGetStarted, onSignIn, onGoHome }) => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-2 flex-shrink-0 mt-4 sm:mt-0">
+            <div className="flex items-center gap-2 flex-shrink-0 mt-8 sm:mt-0">
               <div className="bg-gold/20 text-charcoal text-xs font-medium font-sans px-3 py-1.5 rounded-full">~4 min</div>
               <div className="bg-white text-stone-500 shadow-sm text-xs font-medium font-sans px-3 py-1.5 rounded-full">High Yield</div>
             </div>
